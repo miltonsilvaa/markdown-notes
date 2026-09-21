@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markdown Notes</title>
+<meta name="description" content="App de notas com suporte a Markdown, busca e persistência local.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Markdown Notes">
+<meta property="og:description" content="App de notas com suporte a Markdown, busca e persistência local.">
+<meta property="og:image" content="screenshot.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ctext x='2' y='19' font-size='20'%3E%F0%9F%93%9D%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="sidebar__header">
+      <h1 class="sidebar__logo">📝 Notas</h1>
+      <button type="button" id="newNoteBtn" class="btn btn--icon" aria-label="Nova nota">+</button>
+    </div>
+    <div class="sidebar__search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" id="searchInput" placeholder="Buscar notas...">
+    </div>
+    <ul class="notes-list" id="notesList" aria-label="Lista de notas"></ul>
+  </aside>
+
+  <main class="editor-area">
+    <div class="editor-empty" id="editorEmpty">
+      <p>Selecione uma nota ou crie uma nova para começar.</p>
+    </div>
+
+    <div class="editor-wrap" id="editorWrap" hidden>
+      <div class="editor-toolbar">
+        <input type="text" id="noteTitleInput" class="note-title-input" placeholder="Título da nota">
+        <div class="editor-tabs" role="tablist" aria-label="Alternar entre editar e visualizar">
+          <button type="button" class="tab-btn is-active" data-tab="edit" role="tab" aria-selected="true">Editar</button>
+          <button type="button" class="tab-btn" data-tab="preview" role="tab" aria-selected="false">Visualizar</button>
+        </div>
+        <button type="button" id="deleteNoteBtn" class="btn btn--danger">Excluir</button>
+      </div>
+
+      <div class="editor-panes">
+        <textarea id="noteContentInput" class="editor-pane editor-pane--edit is-active" placeholder="Escreva em Markdown... # Título, **negrito**, *itálico*, - lista, [link](url), `código`"></textarea>
+        <div id="notePreview" class="editor-pane editor-pane--preview" aria-live="polite"></div>
+      </div>
+
+      <p class="autosave-status" id="autosaveStatus" aria-live="polite"></p>
+    </div>
+  </main>
+
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
