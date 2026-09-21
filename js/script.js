@@ -103,7 +103,7 @@
     html = html.replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, "<em>$1</em>");
     html = html.replace(/`([^`]+?)`/g, "<code>$1</code>");
     html = html.replace(
-      /\[(.+?)\]\((.+?)\)/g,
+      /\[(.+?)\]\(([^[\]]+)\)/g,
       (_, text, url) => `<a href="${sanitizeUrl(url)}" target="_blank" rel="noopener noreferrer">${text}</a>`
     );
 
